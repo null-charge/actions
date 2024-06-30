@@ -1,0 +1,37 @@
+name: Check Count of Commits in Pull Request
+
+on:
+  workflow_call:
+    inputs:
+      number_of_commits_allowed:
+        required: true
+        type: number
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Compare commit histories
+        id: compare
+        run: |
+          BASE_BRANCH=${{ github.base_ref }}
+          PR_COMMIT_COUNT=$(git rev-list --count HEAD)
+          BASE_COMMIT_COUNT=$(git rev-list --count origin/$BASE_BRANCH)
+          ALLOWED_COMMITS=${{ inputs.number_of_commits_allowed }}
+          ACTUAL_COMMITS=$(expr $PR_COMMIT_COUNT - $BASE_COMMIT_COUNT - 1)
+          if [[ "$ACTUAL_COMMITS" -gt "$ALLOWED_COMMITS" ]]; then
+            echo "::error::Error: The pull request contains $ACTUAL_COMMITS commits, but only $ALLOWED_COMMITS commits are allowed."
+            exit 1
+          fi
