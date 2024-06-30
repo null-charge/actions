@@ -38,18 +38,3 @@ We welcome contributions from the community Whether it's adding new actions, imp
 ## Contact Us
 
 For inquiries, support, or feedback, please reach out to us via GitHub Discussions or by opening an issue in this repository.
-
----
-
-This description aims to clearly communicate the purpose, offerings, and guidelines of the Reusable Actions Repository, encouraging collaboration and contribution from the developer community.
-
-Citations:
-[1] https://docs.github.com/en/actions/using-workflows/reusing-workflows
-[2] https://earthly.dev/blog/github-actions-reusable-workflows/
-[3] https://github.com/orgs/community/discussions/16838
-[4] https://www.dhiwise.com/post/the-ultimate-guide-to-github-reusable-workflows-maximize-efficiency-and-collaboration
-[5] https://stackoverflow.com/questions/71524542/how-to-use-reusable-github-workflows-and-keep-secrets-in-a-single-place
-[6] https://resources.github.com/learn/pathways/automation/intermediate/create-reusable-workflows-in-github-actions/
-[7] https://stackoverflow.com/questions/59757355/reuse-portion-of-github-action-across-jobs
-[8] https://www.stepsecurity.io/blog/github-actions-security-best-practices
-[9] https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
