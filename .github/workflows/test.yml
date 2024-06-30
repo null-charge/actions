@@ -10,4 +10,4 @@ jobs:
     with:
       number_of_commits_allowed: 1
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token_github: ${{ secrets.GITHUB_TOKEN }}
