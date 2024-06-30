@@ -1,0 +1,13 @@
+name: Checks that all workflows below are running
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+
+jobs:
+  commit-count-validator:
+    uses: null-charge/actions/.github/workflows/commit-count-validator.yml@main
+    with:
+      number_of_commits_allowed: 1
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
