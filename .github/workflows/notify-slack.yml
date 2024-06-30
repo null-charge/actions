@@ -2,21 +2,15 @@ name: Sends a Slack notification on Pull Request creation
 
 on:
   workflow_call:
-    inputs:
-      developer_name:
+    secrets:
+      SLACK_WEBHOOK_URL:
         required: true
-        type: string
-      pr_comment:
-        required: true
-        type: string
 
 jobs:
   post_slack_message:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: rtCamp/action-slack-notify@v2.0.0
-    env:
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-      SLACK_USERNAME: PR-BOT
-      SLACK_CHANNEL: new-pr-for-review
+      - name: Send notification to Slack
+        uses: slackapi/slack-github-action@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
