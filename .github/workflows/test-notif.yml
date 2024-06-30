@@ -1,0 +1,14 @@
+name: Testing slack notifications
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+
+jobs:
+  notify-slack:
+    uses: null-charge/actions/.github/workflows/notify-slack.yml@main
+    with:
+      developer_name: Chirag
+      pr_comment: Testing notif with PR
+    secrets:
+      token_github: ${{ secrets.GITHUB_TOKEN }}
